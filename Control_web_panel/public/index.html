@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+  <title>Panel de control Web</title>
+</head>
+<body>
+
+ 
+  <div class="ondisplay">
+	<h1>Panel de control Web</h1>
+	<div id="potentiometer-value">0</div>
+  <section id="analog-meter">
+	<div class="bg"></div>
+	<div class="blocker"></div>
+	<div class="meter">
+		<div class="marker" id="marker-0">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>0</p>
+		</div>
+		<div class="marker" id="marker-1">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>10</p>
+		</div>
+		<div class="marker" id="marker-2">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>20</p>
+		</div>
+		<div class="marker" id="marker-3">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>30</p>
+		</div>
+		<div class="marker" id="marker-4">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>40</p>
+		</div>
+		<div class="marker" id="marker-5">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>50</p>
+		</div>
+		<div class="marker" id="marker-6">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>60</p>
+		</div>
+		<div class="marker" id="marker-7">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>70</p>
+		</div>
+		<div class="marker" id="marker-8">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>80</p>
+		</div>
+		<div class="marker" id="marker-9">
+			<div class="main-line"></div>
+			<div class="precise-line precise-line-1"></div>
+			<div class="precise-line precise-line-2"></div>
+			<div class="precise-line precise-line-3"></div>
+			<div class="precise-line precise-line-4"></div>
+			<p>90</p>
+		</div>
+		<div class="marker" id="marker-10">
+			<div class="main-line"></div>
+			<p>100</p>
+		</div>
+
+		</div>
+		<div class="pointer">
+			<div class="arrow-up"></div>
+			<div class="circle"></div>
+		</div>
+	</div>
+</section>
+	<div class="ondisplay">
+
+
+		
+		<section title="Control_Led">
+		  <!-- .slideThree -->
+
+		  <div class="roundedOne">
+			<input type="checkbox" value="None" id="roundedOne" name="check" checked />
+			<label for="roundedOne"></label>
+		  </div>
+		  <!-- end .slideThree -->
+		</section>
+		
+
+		</section>
+		
+
+		
+	  </div>
+  <script>
+	  // Obtén una referencia al checkbox
+	  const checkbox = document.getElementById('roundedOne');
+
+		// Agrega un event listener para detectar cambios en el checkbox
+		checkbox.addEventListener('change', function () {
+			// Obtén la posición actual del checkbox
+			const posicion = checkbox.checked ? 1 : 2;
+
+			// Construye la URL GET correspondiente
+			const url = `http://192.168.3.228/?led_2_${posicion === 1 ? 'off' : 'on'}`;
+
+			// Envía la solicitud GET a la URL
+			fetch(url)
+				.then(response => {
+					if (response.ok) {
+						console.log(`Solicitud GET enviada a ${url}`);
+					} else {
+						console.error('Error al enviar la solicitud GET');
+					}
+				})
+				.catch(error => {
+					console.error('Error de red:', error);
+				});
+		});
+
+				// Agrega un event listener para detectar cambios en el checkbox
+				checkbox.addEventListener('change', function () {
+					// Obtén la posición actual del checkbox
+					const posicion = checkbox.checked ? 1 : 2;
+
+					// Construye la URL GET correspondiente
+					const url = `http://192.168.3.228/?led_2_${posicion === 1 ? 'off' : 'on'}`;
+
+					// Envía la solicitud GET a la URL
+					fetch(url)
+						.then(response => {
+							if (response.ok) {
+								console.log(`Solicitud GET enviada a ${url}`);
+							} else {
+								console.error('Error al enviar la solicitud GET');
+							}
+						})
+						.catch(error => {
+							console.error('Error de red:', error);
+						});
+				});
+    const socket = new WebSocket("ws://localhost:3000");
+	// All this jquery is just used for presentation. Not required at all for the radio buttons to work.
+
+    // Función para actualizar el valor del potenciómetro en la página
+    function updatePotentiometerValue(value) {
+      document.getElementById("potentiometer-value").textContent = value;
+      console.log(value);
+      const angulo = -120+2.4*(value);
+
+      const pointer = document.querySelector('.pointer');
+      pointer.style.transform = `rotate(${angulo}deg)`;
+
+      
+    }
+
+    // Manejar los mensajes WebSocket recibidos del servidor
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      updatePotentiometerValue(data.value);
+    };
+
+    // Llama esta función cuando se carga la página
+    function loadInitialValue() {
+      socket.send("getPotentiometerValue");
+    }
+
+    // Llamar a la función para cargar el valor inicial
+    loadInitialValue();
+  </script>
+</body>
+</html>
+

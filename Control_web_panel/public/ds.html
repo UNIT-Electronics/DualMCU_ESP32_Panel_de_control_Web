@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Control de LED</title>
+</head>
+<body>
+    <input type="checkbox" value="None" id="slideThree" name="check" checked />
+    <label for="slideThree"></label>
+
+    <script>
+        // Obtén una referencia al checkbox
+        const checkbox = document.getElementById('slideThree');
+
+        // Agrega un event listener para detectar cambios en el checkbox
+        checkbox.addEventListener('change', function () {
+            // Obtén la posición actual del checkbox
+            const posicion = checkbox.checked ? 1 : 2;
+
+            // Construye la URL GET correspondiente
+            const url = `http://192.168.3.228/?led_2_${posicion === 1 ? 'on' : 'off'}`;
+
+            // Envía la solicitud GET a la URL
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        console.log(`Solicitud GET enviada a ${url}`);
+                    } else {
+                        console.error('Error al enviar la solicitud GET');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error de red:', error);
+                });
+        });
+    </script>
+</body>
+</html>
